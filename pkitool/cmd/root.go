@@ -30,8 +30,8 @@ func Execute() {
 
 func init() {
 	RootCmd.PersistentFlags().StringP("pki", "p", "./pki", "pki directory")
-	RootCmd.PersistentFlags().StringP("curve", "c", "P521", "elliptic curve to use (P521, P384, P256 or P224)")
-	RootCmd.PersistentFlags().IntP("rsabits", "r", 0, "RSA key size (4096, 2048 or 1024)")
+	RootCmd.PersistentFlags().StringP("curve", "c", "", "elliptic curve to use (P521, P384, P256 or P224)")
+	RootCmd.PersistentFlags().IntP("rsabits", "r", 2048, "RSA key size (4096, 2048 or 1024)")
 }
 
 func loadEntity(cmd *cobra.Command, name string) *pki.Entity {
