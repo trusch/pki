@@ -8,12 +8,12 @@ import (
 )
 
 func TestCA(t *testing.T) {
-	_, err := NewSelfSignedCA("P521", 0)
+	_, err := NewSelfSignedCA("test-ca", "P521", 0)
 	assert.Nil(t, err)
 }
 
 func TestIssueing(t *testing.T) {
-	ca, err := NewSelfSignedCA("P521", 0)
+	ca, err := NewSelfSignedCA("test-ca", "P521", 0)
 
 	serverCrt, serverKey, err := ca.IssueServer("my-server", "P521", 0)
 	assert.Nil(t, err)
@@ -32,7 +32,7 @@ func TestIssueing(t *testing.T) {
 }
 
 func TestSubCA(t *testing.T) {
-	ca, _ := NewSelfSignedCA("P521", 0)
+	ca, _ := NewSelfSignedCA("test-ca", "P521", 0)
 	caCrt, caKey, _ := ca.IssueSubCA("my-ca", "P521", 0)
 	subCA, err := NewCA(caCrt, caKey, big.NewInt(1))
 	assert.Nil(t, err)

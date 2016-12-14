@@ -16,12 +16,13 @@ var initCmd = &cobra.Command{
 	Long:  `This initializes a new CA by creating a self signed CA certificate.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		checkSafeInit(cmd)
+		pkiDir, _ := cmd.Flags().GetString("pki")
 		curve, _ := cmd.Flags().GetString("curve")
 		rsaBits, _ := cmd.Flags().GetInt("rsabits")
 		if rsaBits != 0 {
 			curve = ""
 		}
-		ca, err := pki.NewSelfSignedCA(curve, rsaBits)
+		ca, err := pki.NewSelfSignedCA(pkiDir, curve, rsaBits)
 		if err != nil {
 			log.Fatal(err)
 		}

@@ -88,8 +88,8 @@ func NewCA(certPem, keyPem []byte, nextSerial *big.Int) (*CA, error) {
 // * 1024
 // * 2048
 // * 4096
-func NewSelfSignedCA(curve string, rsaBits int) (*CA, error) {
-	cert, key, err := GenerateCert(nil, "ca", "", 10*365*24*time.Hour, true, rsaBits, curve, x509.ExtKeyUsageServerAuth)
+func NewSelfSignedCA(caID string, curve string, rsaBits int) (*CA, error) {
+	cert, key, err := GenerateCert(nil, caID, "", 10*365*24*time.Hour, true, rsaBits, curve, x509.ExtKeyUsageServerAuth)
 	if err != nil {
 		return nil, err
 	}
