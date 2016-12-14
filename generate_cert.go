@@ -84,7 +84,7 @@ func GenerateCert(ca *CA, name string, validFrom string, validFor time.Duration,
 		NotBefore:             notBefore,
 		NotAfter:              notAfter,
 		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
-		ExtKeyUsage:           []x509.ExtKeyUsage{usage, x509.ExtKeyUsageAny},
+		ExtKeyUsage:           []x509.ExtKeyUsage{usage},
 		BasicConstraintsValid: true,
 	}
 
