@@ -73,6 +73,13 @@ func GenerateCert(ca *CA, name string, validFrom string, validFor time.Duration,
 		}
 	} else {
 		serialNumber = ca.GetNextSerial()
+		if serialNumber == nil {
+			serialNumberLimit := new(big.Int).Lsh(big.NewInt(1), 128)
+			serialNumber, err = rand.Int(rand.Reader, serialNumberLimit)
+			if err != nil {
+				return nil, nil, fmt.Errorf("failed to generate serial number: %s", err)
+			}
+		}
 	}
 
 	template := x509.Certificate{

@@ -59,6 +59,9 @@ func (ca *CA) IssueCA(name, curve string, rsaBits int) (cert, key []byte, err er
 
 // GetNextSerial returns the next free serial number and increases the internal value
 func (ca *CA) GetNextSerial() *big.Int {
+	if ca.NextSerial == nil {
+		return nil
+	}
 	next := &big.Int{}
 	next.Set(ca.NextSerial)
 	ca.NextSerial.Add(ca.NextSerial, big.NewInt(1))
