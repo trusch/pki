@@ -54,7 +54,7 @@ func (ca *CA) IssueServer(name, curve string, rsaBits int) (cert, key []byte, er
 // * 2048
 // * 4096
 func (ca *CA) IssueCA(name, curve string, rsaBits int) (cert, key []byte, err error) {
-	return GenerateCert(ca, name, "", 10*365*24*time.Hour, true, rsaBits, curve, x509.ExtKeyUsageServerAuth)
+	return GenerateCert(ca, name, "", 10*365*24*time.Hour, true, rsaBits, curve, x509.ExtKeyUsageAny)
 }
 
 // GetNextSerial returns the next free serial number and increases the internal value
