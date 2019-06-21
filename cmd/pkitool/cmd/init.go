@@ -6,7 +6,8 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/trusch/pki"
+
+	"github.com/trusch/pki/pkg/pki"
 )
 
 // initCmd represents the init command

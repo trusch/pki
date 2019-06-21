@@ -25,7 +25,7 @@ func TestIssueing(t *testing.T) {
 	assert.NotEmpty(t, clientCrt)
 	assert.NotEmpty(t, clientKey)
 
-	caCrt, caKey, err := ca.IssueSubCA("my-ca", "P521", 0)
+	caCrt, caKey, err := ca.IssueCA("my-ca", "P521", 0)
 	assert.Nil(t, err)
 	assert.NotEmpty(t, caCrt)
 	assert.NotEmpty(t, caKey)
@@ -33,7 +33,7 @@ func TestIssueing(t *testing.T) {
 
 func TestSubCA(t *testing.T) {
 	ca, _ := NewSelfSignedCA("test-ca", "P521", 0)
-	caCrt, caKey, _ := ca.IssueSubCA("my-ca", "P521", 0)
+	caCrt, caKey, _ := ca.IssueCA("my-ca", "P521", 0)
 	subCA, err := NewCA(caCrt, caKey, big.NewInt(1))
 	assert.Nil(t, err)
 	clientCrt, clientKey, err := subCA.IssueClient("my-client", "P521", 0)

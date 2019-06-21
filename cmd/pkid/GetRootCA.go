@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"math/big"
 
-	"github.com/trusch/pki"
+	"github.com/trusch/pki/pkg/pki"
 
 	"gopkg.in/mgo.v2/bson"
 )

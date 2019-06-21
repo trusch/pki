@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 
 	"github.com/spf13/cobra"
-	"github.com/trusch/pki"
+	"github.com/trusch/pki/pkg/pki"
 )
 
 var cfgFile string

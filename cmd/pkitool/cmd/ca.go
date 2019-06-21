@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/spf13/cobra"
-	"github.com/trusch/pki"
+	"github.com/trusch/pki/pkg/pki"
 )
 
 // caCmd represents the ca command

@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/trusch/pki/pkitool/cmd"
+	"github.com/trusch/pki/cmd/pkitool/cmd"
 )
 
 func main() {

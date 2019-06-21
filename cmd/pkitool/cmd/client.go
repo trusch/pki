@@ -4,13 +4,14 @@ import (
 	"log"
 
 	"github.com/spf13/cobra"
-	"github.com/trusch/pki"
+	"github.com/trusch/pki/pkg/pki"
 )
 
-var serverCmd = &cobra.Command{
-	Use:   "server",
-	Short: "this issues a server certificate",
-	Long:  `This issues a server certificate usable for authenticating servers on clients.`,
+// clientCmd represents the client command
+var clientCmd = &cobra.Command{
+	Use:   "client",
+	Short: "this issues a client certificate",
+	Long:  `This issues a client certificate usable for authenticating clients on servers.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		ca := loadCA(cmd)
 		name, _ := cmd.Flags().GetString("name")
@@ -27,7 +28,7 @@ var serverCmd = &cobra.Command{
 		if rsaBits != 0 {
 			curve = ""
 		}
-		crt, key, err := ca.IssueServer(name, curve, rsaBits)
+		crt, key, err := ca.IssueClient(name, curve, rsaBits)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -41,5 +42,5 @@ var serverCmd = &cobra.Command{
 }
 
 func init() {
-	issueCmd.AddCommand(serverCmd)
+	issueCmd.AddCommand(clientCmd)
 }
