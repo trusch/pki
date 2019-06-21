@@ -8,7 +8,7 @@ golang pki library + command line tool
 # Usage
 
 ```
-➜ go get github.com/trusch/pki/pkitool
+➜ go get github.com/trusch/pki/cmd/pkitool
 ➜ pkitool init
 ➜ pkitool issue server my-server
 ➜ pkitool issue client my-client
